@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: stg_payments
+    description: Staging payments data from stripe.
+    columns: 
+      - name: payment_id
+        description: Primary key for payments.
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: Foreign key for orders data.
+        tests:
+            - not_null
+      - name: payment_method
+        description: Method of payment.
+        tests:
+            - accepted_values:
+                values:
+                    - credit_card
+                    - coupon
+                    - bank_transfer
+                    - gift_card
+      - name: status
+        description: Status of payment transition
+        tests: 
+            - not_null
+      - name: amount
+        description: Total of money.
+        tests:
+            - not_null
+      - name: create_at
+        description: Date of payment.
+        tests:
+            - not_null
+
+ 
+ 

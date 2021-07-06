@@ -2,14 +2,23 @@ version: 2
 
 models:
   - name: stg_customers
+    description: Staging customer data from jaflle shop.
     columns: 
       - name: customer_id
+        description: Primary key for customers.
         tests:
           - unique
           - not_null
+      - name: first_name
+        description: First name of customer.
+      - name: last_name
+        description: Last name of customer.
+
   - name: stg_orders
+    description: Staging orders data from jaflle ship.
     columns: 
       - name: status
+        description: "{{ doc('order_status') }}"
         tests:
           - accepted_values:
               values:
@@ -19,6 +28,7 @@ models:
                 - placed
                 - return_pending
       - name: order_id
+        description: Primary key for orders.
         tests:
           - unique
           - not_null
@@ -27,4 +37,8 @@ models:
           - relationships:
                 to: ref('stg_customers')
                 field: customer_id
+      - name: customer_id
+        description: Foreign key of customers data.
+      - name: order_date
+        description: Date of order.
     
