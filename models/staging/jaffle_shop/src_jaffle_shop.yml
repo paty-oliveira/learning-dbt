@@ -1,0 +1,35 @@
+version: 2
+
+sources:
+  - name: jaffle_shop
+    description: A clone of a Postgres appplication database.
+    database: raw
+    tables:
+      - name: customers
+        description: Raw customers data
+        columns:
+          - name: id
+            description: Primary key of customers table.
+            tests:
+              - unique
+              - not_null
+          - name: first_name
+            description: First name of the customer.
+          - name: last_name
+            description: Last name of the customer.
+      
+      - name: orders
+        description: Raw orders data
+        columns: 
+          - name: id
+            description: Primary key of orders table.
+            tests:
+              - unique
+              - not_null
+          - name: user_id
+            description: User id identification.
+          - name: order_date
+            description: Date of the order.
+          - name: status
+            description: Status of the order.
+    
