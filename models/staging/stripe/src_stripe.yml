@@ -1,0 +1,28 @@
+version: 2
+
+sources:
+  - name: stripe
+    database: raw
+    tables:
+      - name: payment
+        description: Raw payment data.
+        loaded_at_field: _batched_at
+        freshness:
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
+        columns:
+          - name: id
+            description: Primary key of payment table
+            tests:
+              - unique
+              - not_null
+          - name: orderid
+            description: Order id of the payment.
+          - name: paymentmethod
+            description: Type of payment.
+          - name: status
+            description: Status of payment.
+          - name: amount
+            description: Total of money in each payment.
+          - name: created
+            description: Date of payment.
