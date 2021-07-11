@@ -1,15 +1,16 @@
-Welcome to your new dbt project!
+# Data Build Tool (dbt) 
 
-### Using the starter project
+This repository is a example of how to implement a data warehouse using dbt. 
+This example belongs to the [dbt learning course](https://courses.getdbt.com/courses/fundamentals).
 
-Try running the following commands:
-- dbt run
-- dbt test
+dbt is designed to handle the transformation layer of the ELT framework for data warehousing, creating a connection
+between a data warehouse and run SQL code against the data warehouse to transform and aggregate data.
 
-
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](http://slack.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+### In this mini-project was used:
+    - Snowflake as data warehouse
+    - Star Schema for data modelling
+        - Dimensions: dim_orders, dim_customers, dim_payments
+        - Fact: fct_orders
+    - Staging views for raw data processing
+    - Data validation of data using schema (uniqueness and completeness) and data tests (ad-hoc test queries)
+    - Packages from dbt hub to extend dbt funcionalities
